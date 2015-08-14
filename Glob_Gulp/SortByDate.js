@@ -6,11 +6,13 @@ var rename = require("gulp-rename");
 
 gulp.task('parseFolders', function(){
     return gulp.src(
-        './Test/*.jpg'
+        './Test/**/*.jpg'
     ).pipe(rename(function(path){
                 gutil.log(path.basename);
-                console.log("Hello, I'm working...somehow");
+                //console.log("Hello, I'm working...somehow");
                 path.basename += "hello";
+                gutil.log(path.basename);
+                path.extname = ".jpg";
             }
         ));
 });

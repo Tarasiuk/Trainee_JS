@@ -2,10 +2,11 @@
   "name": "SortByDate",
   "version": "0.0.1",
   "dependencies": {
-    "gulp":"3.9.0",
-    "gulp-util":"3.0.6",
-    "glob":"5.0.14",
-    "yargs" :"3.19.0",
-    "gulp-rename": "1.2.2"
+    "glob": "5.0.14",
+    "gulp": "3.9.0",
+    "gulp-rename": "1.2.2",
+    "gulp-util": "3.0.6",
+    "require-dir": "^0.3.0",
+    "yargs": "3.19.0"
   }
 }
