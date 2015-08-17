@@ -1,24 +1,31 @@
 var gulp = require('gulp');
 var glob = require("glob");
-var util = require("gulp-util");
-var argv = require("yargs").argv;
 var rename = require("gulp-rename");
 var fs = require("fs-extra");
 var tap = require("gulp-tap");
-var dateFormat = require('dateformat');
 var moment = require('moment');
+var exif = require('gulp-exif');
+
+gulp.task('clean', function(){
+    fs.removeSync("./Sorted");
+});
 
 gulp.task('parseFolders', function(){
-    var count = 1;
-    var statDate;
-    var zeroes;
-    // util.log(count);
+    var count = 1,
+        statDate,
+        zeroes;
     return gulp.src(
         './Test/**/*.jpg'
     )
+    .pipe(exif())
     .pipe(tap(function (file,t) {
-        statDate = fs.statSync(file.path).mtime;
+        if(file.DateTimeOriginal) {
+            statDate = file.CreateDate;
+        }else {
+            statDate = fs.statSync(file.path).mtime;
+        }
         statDate = moment(statDate).format("DDMMYYYY");
+
     }))
     .pipe(tap(function (file,t) {
             zeroes = "";
