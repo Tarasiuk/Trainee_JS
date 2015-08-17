@@ -6,10 +6,6 @@ var tap = require("gulp-tap");
 var moment = require('moment');
 var exif = require('gulp-exif');
 
-gulp.task('clean', function(){
-    fs.removeSync("./Sorted");
-});
-
 gulp.task('parseFolders', function(){
     var count = 1,
         statDate,
