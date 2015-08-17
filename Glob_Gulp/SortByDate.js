@@ -22,7 +22,7 @@ gulp.task('parseFolders', function(){
     }))
     .pipe(tap(function (file,t) {
             zeroes = "";
-            var countZeroes = 8 - Math.ceil(count/10);
+            var countZeroes = 8 - count.toString().length;
             for (var i = 0; i < countZeroes; i++)
             {
                 zeroes += "0";
