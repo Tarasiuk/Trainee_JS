@@ -21,11 +21,19 @@ gulp.task('parseFolders', function(){
     .pipe(tap(function (file,t) {
         if(file.exif.exif.CreateDate) {
             statDate = file.exif.exif.CreateDate;
-        }else {
+        } else {
             statDate = fs.statSync(file.path).mtime;
         }
-        statDate = moment(statDate).format("DDMMYYYY");
 
+        if (moment(statDate).isValid()) {
+            statDate = moment(statDate).format("DDMMYYYY");
+        } else {
+            statDate = moment(statDate, 'YYYY:MM:DD HH:mm:SS');
+            statDate = moment(statDate).format("DDMMYYYY");
+        }
+
+        console.log(count);
+        console.log(statDate);
     }))
     .pipe(tap(function (file,t) {
             zeroes = "";
