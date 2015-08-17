@@ -19,7 +19,7 @@ gulp.task('parseFolders', function(){
     )
     .pipe(exif())
     .pipe(tap(function (file,t) {
-        if(file.DateTimeOriginal) {
+        if(file.CreateDate) {
             statDate = file.CreateDate;
         }else {
             statDate = fs.statSync(file.path).mtime;
