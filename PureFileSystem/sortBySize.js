@@ -6,7 +6,6 @@ function main() {
 
     console.log("Big files are bigger then " + (middle >> 10) + "Kb");
 
-    filesystem.ensureDir('.\\Images');
     filesystem.ensureDir('.\\Images\\big');
     filesystem.ensureDir('.\\Images\\small');
 
