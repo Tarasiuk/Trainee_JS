@@ -6,14 +6,13 @@ var gulp = require('gulp'),
     moment = require('moment'),
     exif = require('gulp-exif'),
     _ = require('lodash'),
-    sorted = './Sorted';
+    sorted = './Sorted',
+    argv = require('yargs').argv;
 
 gulp.task('parseFolders', function(){
     var count = 1;
 
-    return gulp.src(
-        './Test/**/*.jpg'
-    )
+    return gulp.src(argv.src + "/**/*.jpg")
     .pipe(exif())
     .pipe(tap(function (file,t) {
         if(file.exif.exif.CreateDate) {
